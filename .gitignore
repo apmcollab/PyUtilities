@@ -1,0 +1,13 @@
+Testing
+Release
+Debug
+_release*
+_debug*
+build
+.DS_Store
+*.exe
+*.obj
+*.o
+__pycache__
+.project
+.pydevprojects
