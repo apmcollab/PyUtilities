@@ -3,8 +3,6 @@
 #############################################################################
 #                         XML_ParameterListArray.py 
 #
-# A copy of PyUtilities/XML_ParameterListArray.py 
-#
 # Author: C. Anderson
 # Origin date                   : June 12, 2020 
 # Updated to use lxml parser    : Nov  11, 2025 (cra) 
