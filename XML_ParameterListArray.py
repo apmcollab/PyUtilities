@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 
 #############################################################################
-#                               XML_ParameterListArray.py 
+#                         XML_ParameterListArray.py 
+#
+# A copy of PyUtilities/XML_ParameterListArray.py 
 #
 # Author: C. Anderson
-# Origin date : June 12, 2020 
-# Updated     : Nov  10, 2025 
+# Origin date                   : June 12, 2020 
+# Updated to use lxml parser    : Nov  11, 2025 (cra) 
 # Version 1.0.2
 #############################################################################
 #
@@ -337,7 +339,7 @@ class XML_ParameterListArray:
             raise Exception("\n ParameterList not found \n ParameterList specified  : " + parameterListName)
         parameterNames = []
         for parameter in parameterList:
-            if(type(parameter) is str):
+            if not (parameter.tag is ET.Comment):
                 parameterNames.append(parameter.tag)
         return parameterNames
     
@@ -378,7 +380,7 @@ class XML_ParameterListArray:
                              + "\n Parameter    : " + parameterName)
         childNames = []
         for childParam  in instance:
-            if(type(childParam) is str):
+            if not (childParam.tag is ET.Comment):
                 childNames.append(childParam.tag)
         return childNames
     
