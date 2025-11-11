@@ -297,7 +297,6 @@ class XML_ParameterListArray:
         if(instance == None):
             raise Exception("\n Parameter not found in ParameterList \n ParmeterList : " + parameterListName \
                              + "\n Parameter    : " + parameterName)
-
         return self.getValueOrText(instance)
     
     def getParameterText(self,parameterName, parameterListName):
@@ -336,10 +335,10 @@ class XML_ParameterListArray:
         parameterList = self.tree.find(parameterListName)
         if(parameterList == None):
             raise Exception("\n ParameterList not found \n ParameterList specified  : " + parameterListName)
-        
         parameterNames = []
         for parameter in parameterList:
-            parameterNames.append(parameter.tag)
+            if(type(parameter) is str):
+                parameterNames.append(parameter.tag)
         return parameterNames
     
     def isParameterList(self,parameterListName):
@@ -379,7 +378,8 @@ class XML_ParameterListArray:
                              + "\n Parameter    : " + parameterName)
         childNames = []
         for childParam  in instance:
-            childNames.append(childParam.tag)
+            if(type(childParam) is str):
+                childNames.append(childParam.tag)
         return childNames
     
     def getParameterChildValues(self,parameterChildName,parameterName,parameterListName):
@@ -400,6 +400,7 @@ class XML_ParameterListArray:
         for p  in childParams:
             childValues.append(self.getValue(p))
         return childValues
+
     #
     # Adds a child value to all instances of the specified parameter in the
     # specified parameterList.
